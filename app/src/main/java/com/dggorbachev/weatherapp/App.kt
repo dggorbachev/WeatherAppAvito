@@ -1,6 +1,5 @@
 package com.dggorbachev.weatherapp
 
-import android.app.Application
 import com.dggorbachev.weatherapp.di.AppComponent
 import com.dggorbachev.weatherapp.di.DaggerAppComponent
 import dagger.android.AndroidInjector

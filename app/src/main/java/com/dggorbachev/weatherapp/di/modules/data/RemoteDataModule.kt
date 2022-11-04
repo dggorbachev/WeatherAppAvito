@@ -4,6 +4,10 @@ import com.dggorbachev.weatherapp.data.remote_current_weather.CurrentWeatherApi
 import com.dggorbachev.weatherapp.data.remote_current_weather.CurrentWeatherRemoteSource
 import com.dggorbachev.weatherapp.data.remote_current_weather.RemoteCurrentWeatherRepo
 import com.dggorbachev.weatherapp.data.remote_current_weather.RemoteCurrentWeatherRepoImpl
+import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteSearchHintsRepo
+import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteSearchHintsRepoImpl
+import com.dggorbachev.weatherapp.data.remote_search_hints.SearchHintsApi
+import com.dggorbachev.weatherapp.data.remote_search_hints.SearchHintsRemoteSource
 import com.dggorbachev.weatherapp.di.annotations.AppScope
 import dagger.Module
 import dagger.Provides
@@ -14,7 +18,7 @@ object RemoteDataModule {
 
     @Provides
     @AppScope
-    fun providePlacesApi(retrofit: Retrofit): CurrentWeatherApi =
+    fun provideCurrentWeatherApi(retrofit: Retrofit): CurrentWeatherApi =
         retrofit.create(CurrentWeatherApi::class.java)
 
     @Provides
@@ -26,4 +30,19 @@ object RemoteDataModule {
     @AppScope
     fun provideRemoteCurrentWeatherRepo(currentWeatherRemoteSource: CurrentWeatherRemoteSource): RemoteCurrentWeatherRepo =
         RemoteCurrentWeatherRepoImpl(currentWeatherRemoteSource)
+
+    @Provides
+    @AppScope
+    fun provideSearchHintsApi(retrofit: Retrofit): SearchHintsApi =
+        retrofit.create(SearchHintsApi::class.java)
+
+    @Provides
+    @AppScope
+    fun provideSearchHintsRemoteSource(searchHintsApi: SearchHintsApi): SearchHintsRemoteSource =
+        SearchHintsRemoteSource(searchHintsApi)
+
+    @Provides
+    @AppScope
+    fun provideRemoteSearchHintsRepo(searchHintsRemoteSource: SearchHintsRemoteSource): RemoteSearchHintsRepo =
+        RemoteSearchHintsRepoImpl(searchHintsRemoteSource)
 }

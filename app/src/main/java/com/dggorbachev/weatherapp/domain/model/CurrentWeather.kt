@@ -9,4 +9,6 @@ data class CurrentWeather(
     val windSpeed: Double,
     val description: String,
     val sunset: Long,
+    val longitude: Double,
+    val latitude: Double,
 )

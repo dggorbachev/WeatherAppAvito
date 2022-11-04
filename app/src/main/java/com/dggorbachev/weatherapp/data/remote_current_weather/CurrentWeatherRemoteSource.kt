@@ -1,7 +1,6 @@
 package com.dggorbachev.weatherapp.data.remote_current_weather
 
 import com.dggorbachev.weatherapp.data.remote_current_weather.model.CurrentWeatherResponseModel
-import com.dggorbachev.weatherapp.domain.model.CurrentWeather
 import javax.inject.Inject
 
 class CurrentWeatherRemoteSource @Inject constructor(private val currentWeatherApi: CurrentWeatherApi) {
