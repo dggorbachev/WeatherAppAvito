@@ -47,6 +47,8 @@ dependencies {
     def nav_version = "2.5.3"
     def okhttp3_version = "4.10.0"
     def fragment_version = "1.5.4"
+    def location_version = "21.0.1"
+    def datastore_version = "1.0.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -88,4 +90,10 @@ dependencies {
 
     // Fragment
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // Location
+    implementation "com.google.android.gms:play-services-location:$location_version"
+
+    // AndroidX DataStore
+    implementation "androidx.datastore:datastore-preferences:$datastore_version"
 }

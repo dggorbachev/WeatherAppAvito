@@ -16,14 +16,35 @@
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             android:indeterminate="true"
-            android:indeterminateTintMode="src_atop"
             android:indeterminateTint="@color/light_theme_color_blue"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivNotification"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:src="@color/no_connection"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNotification"
+            style="@style/NoticeAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:textColor="@color/light_theme_color_back_elevated"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Нет подключения" />
 
         <ImageView
             android:layout_width="256dp"
@@ -34,27 +55,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvRegion"
-            style="@style/TextAppearance.Title"
+        <LinearLayout
+            android:id="@+id/llRegion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:textColor="?attr/regionColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Москва, Россия" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivPlace"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginEnd="-10dp"
-            android:src="@drawable/ic_pin"
-            app:layout_constraintBottom_toBottomOf="@id/tvRegion"
-            app:layout_constraintEnd_toStartOf="@id/tvRegion"
-            app:layout_constraintTop_toTopOf="@id/tvRegion"
-            app:tint="?attr/regionColor" />
+            <ImageView
+                android:id="@+id/ivPlace"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_pin"
+                app:tint="?attr/regionColor" />
+
+            <TextView
+                android:id="@+id/tvRegion"
+                style="@style/TextAppearance.Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="16dp"
+                android:textColor="?attr/regionColor"
+                tools:text="Москва, Россия" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvMinMaxTemp"
@@ -64,17 +90,16 @@
             android:paddingHorizontal="16dp"
             android:textColor="?attr/regionColor"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvRegion"
+            app:layout_constraintTop_toBottomOf="@id/llRegion"
             tools:text="Макс. 15°C / Мин. 14°C" />
 
         <ImageView
             android:id="@+id/ivFeelsLike"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:layout_marginStart="-6dp"
             android:src="@drawable/ic_feels_like"
             app:layout_constraintBottom_toBottomOf="@id/tvFeelsLike"
-            app:layout_constraintStart_toStartOf="@id/tvFeelsLike"
+            app:layout_constraintEnd_toStartOf="@id/tvFeelsLike"
             app:layout_constraintTop_toTopOf="@id/tvFeelsLike"
             app:tint="?attr/regionColor" />
 
@@ -84,7 +109,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingHorizontal="16dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
             android:textColor="?attr/regionColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvMinMaxTemp"
