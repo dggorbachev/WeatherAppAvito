@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/appBackgroundColor">
+
+    <ImageView
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:layout_marginStart="-100dp"
+        android:src="@drawable/i_day_and_night"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRegion"
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Москва, Россия" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="-10dp"
+        android:src="@drawable/ic_pin"
+        app:layout_constraintBottom_toBottomOf="@id/tvRegion"
+        app:layout_constraintEnd_toStartOf="@id/tvRegion"
+        app:layout_constraintTop_toTopOf="@id/tvRegion"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvMinMaxTemp"
+        style="@style/TextAppearance.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegion"
+        tools:text="Макс. 15°C / Мин. 14°C" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="-6dp"
+        android:src="@drawable/ic_feels_like"
+        app:layout_constraintBottom_toBottomOf="@id/tvFeelsLike"
+        app:layout_constraintStart_toStartOf="@id/tvFeelsLike"
+        app:layout_constraintTop_toTopOf="@id/tvFeelsLike"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvFeelsLike"
+        style="@style/TextAppearance.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMinMaxTemp"
+        tools:text="Ощущается как: 15°C" />
+
+    <TextView
+        android:id="@+id/tvTemp"
+        style="@style/TextAppearance.LargeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/titleColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMinMaxTemp"
+        tools:text="15°C" />
+
+    <TextView
+        android:id="@+id/tvMain"
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/titleColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTemp"
+        tools:text="Небольшой дождь" />
+
+    <ImageView
+        android:id="@+id/tvHumidityIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="16dp"
+        android:src="@drawable/ic_humidity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMain"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvHumidityText"
+        style="@style/TextAppearance.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/humidity_text"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHumidityIcon" />
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/titleColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHumidityText"
+        tools:text="29%" />
+
+    <ImageView
+        android:id="@+id/tvWindIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_wind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHumidity"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvWindText"
+        style="@style/TextAppearance.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/wind_text"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWindIcon" />
+
+    <TextView
+        android:id="@+id/tvWind"
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/titleColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWindText"
+        tools:text="7 м/с" />
+
+    <ImageView
+        android:id="@+id/tvMoonriseIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_sunset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWind"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvMoonriseText"
+        style="@style/TextAppearance.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/sunset_text"
+        android:textColor="?attr/regionColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMoonriseIcon" />
+
+    <TextView
+        android:id="@+id/tvMoonrise"
+        style="@style/TextAppearance.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:textColor="?attr/titleColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvMoonriseText"
+        tools:text="18:02" />
+</androidx.constraintlayout.widget.ConstraintLayout>

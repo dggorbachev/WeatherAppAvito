@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_feels_like.xml" value="0.254" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/ic_move_to_user.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/ic_sunset.xml" value="0.1275" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2804382324218749" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.2925181365210162" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.1341867517541956" />
+        <entry key="app/src/main/res/layout/fragment_7_days_weather.xml" value="0.17314814814814813" />
+        <entry key="app/src/main/res/layout/fragment_current_weather.xml" value="0.21960754394531257" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.21641484013310192" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.18639455782312925" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.12685185185185185" />
+        <entry key="app/src/main/res/menu/top_bar_menu.xml" value="0.5693124841760706" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
