@@ -7,4 +7,39 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="light_theme_color_support_separator">#33000000</color>
+    <color name="light_theme_color_support_overlay">#0F000000</color>
+    <color name="light_theme_color_label_primary">#454545</color>
+    <color name="light_theme_color_label_secondary">#000000</color>
+    <color name="light_theme_color_label_tertiary">#4D000000</color>
+    <color name="light_theme_color_label_disable">#26000000</color>
+    <color name="light_theme_color_red">#FF3B30</color>
+    <color name="light_theme_color_green">#34C759</color>
+    <color name="light_theme_color_light_blue">#ADD8E6</color>
+    <color name="light_theme_color_blue">#007AFF</color>
+    <color name="light_theme_color_gray">#8E8E93</color>
+    <color name="light_theme_color_gray_light">#D1D1D6</color>
+    <color name="light_theme_color_white">#FFFFFF</color>
+    <color name="light_theme_color_back_primary">#F7F6F2</color>
+    <color name="light_theme_color_back_secondary">#FFFFFF</color>
+    <color name="light_theme_color_back_elevated">#FFFFFF</color>
+
+    <color name="dark_theme_color_support_separator">#33FFFFFF</color>
+    <color name="dark_theme_color_support_overlay">#52000000</color>
+    <color name="dark_theme_color_label_primary">#FFFFFF</color>
+    <color name="dark_theme_color_label_secondary">#99FFFFFF</color>
+    <color name="dark_theme_color_label_tertiary">#66FFFFFF</color>
+    <color name="dark_theme_color_label_disable">#39393B</color>
+    <color name="dark_theme_color_red">#FF453A</color>
+    <color name="dark_theme_color_green">#34D74B</color>
+    <color name="dark_theme_color_blue">#0A84FF</color>
+    <color name="dark_theme_color_gray">#8E8E93</color>
+    <color name="dark_theme_color_gray_light">#48484A</color>
+    <color name="dark_theme_color_white">#FFFFFF</color>
+    <color name="dark_theme_color_back_primary">#161618</color>
+    <color name="dark_theme_color_back_secondary">#252528</color>
+    <color name="dark_theme_color_back_elevated">#3C3C3F</color>
+
+    <color name="no_connection">#F4364C</color>
 </resources>

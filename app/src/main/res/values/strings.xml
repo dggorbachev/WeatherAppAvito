@@ -1,3 +1,19 @@
-<resources>
-    <string name="app_name">WeatherAppAvito</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Weather Avito</string>
+    <string name="humidity_text">Влажность</string>
+    <string name="wind_text">Скорость ветра</string>
+    <string name="sunset_text">Закат солнца</string>
+    <string name="feels_like_message">Ощущается как: %1$s°C</string>
+    <string name="min_max_temp_message">Макс. %1$s°C / Мин. %2$s°C</string>
+    <string name="temperature_message">%1$s°C</string>
+    <string name="humidity_message">%1$s%%</string>
+    <string name="wind_speed_message">%1$s м/с</string>
+    <string name="sunset_message">%1$d:%2$d</string>
+    <string name="region_message">%1$s, %2$s</string>
+    <string name="nav_header_title">Погодное приложение для Avito</string>
+    <string name="nav_header_subtitle" tools:ignore="Typos">dggorbachev1@gmail.com</string>
+    <string name="menu_today">Погода на сегодня</string>
+    <string name="menu_week">Погода на неделю</string>
+    <string name="search">Поиск</string>
+    <string name="location">Текущее местоположение</string>
 </resources>

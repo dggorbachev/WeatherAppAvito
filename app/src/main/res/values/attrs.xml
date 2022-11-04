@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Theme.ToDoYandex">
+        <attr name="regionColor" format="reference" />
+        <attr name="titleColor" format="reference" />
+        <attr name="appBackgroundColor" format="reference" />
+        <attr name="menuItemColor" format="reference" />
+    </declare-styleable>
+</resources>
