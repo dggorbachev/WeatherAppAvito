@@ -1,13 +1,13 @@
-package com.dggorbachev.weatherapp.features.current_weather.stateholders
+package com.dggorbachev.weatherapp.features.week_weather.stateholders
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dggorbachev.weatherapp.base.SingleLiveEvent
 import com.dggorbachev.weatherapp.data.local_location.LocalLocationRepo
-import com.dggorbachev.weatherapp.data.remote_current_weather.RemoteCurrentWeatherRepo
+import com.dggorbachev.weatherapp.data.remote_list_weather.RemoteWeekWeatherRepo
 import com.dggorbachev.weatherapp.domain.AsyncState
-import com.dggorbachev.weatherapp.domain.model.Weather
+import com.dggorbachev.weatherapp.domain.model.WeekWeather
 import com.dggorbachev.weatherapp.features.preferences_manager.PreferencesManager
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -16,9 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class CurrentWeatherViewModel @AssistedInject constructor(
+class WeekWeatherViewModel @AssistedInject constructor(
     @Assisted savedStateHandle: SavedStateHandle,
-    private val currentWeatherRepo: RemoteCurrentWeatherRepo,
+    private val weekWeatherRepo: RemoteWeekWeatherRepo,
     private val localLocationRepo: LocalLocationRepo,
     private val preferencesManager: PreferencesManager,
 ) : ViewModel() {
@@ -27,15 +27,15 @@ class CurrentWeatherViewModel @AssistedInject constructor(
 
     val coordinates = SingleLiveEvent<Pair<Double, Double>>()
 
-    val weather: SingleLiveEvent<AsyncState<Weather>> =
-        currentWeatherRepo.weatherState
+    val weather: SingleLiveEvent<AsyncState<List<WeekWeather>>> =
+        weekWeatherRepo.weatherState
 
     val savedLocation = SingleLiveEvent<String>()
     val isRegionPicked = SingleLiveEvent<Boolean>()
 
     @AssistedFactory
     interface Factory {
-        fun create(savedStateHandle: SavedStateHandle): CurrentWeatherViewModel
+        fun create(savedStateHandle: SavedStateHandle): WeekWeatherViewModel
     }
 
     fun getCoordinates() {
@@ -44,9 +44,9 @@ class CurrentWeatherViewModel @AssistedInject constructor(
         }
     }
 
-    fun getCurrentWeather(lat: Double, lon: Double) {
+    fun getWeekWeather(lat: Double, lon: Double) {
         viewModelScope.launch {
-            currentWeatherRepo.get(lat, lon)
+            weekWeatherRepo.get(lat, lon)
         }
     }
 

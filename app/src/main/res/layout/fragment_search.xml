@@ -13,15 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_enter_city"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/ivNotification">
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <AutoCompleteTextView
             android:id="@+id/actvCity"
             style="@style/Widget.MaterialComponents.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
+            android:inputType="text"
             android:lines="1"
             android:nextFocusDown="@+id/txv_holiday_num_of_nights"
             android:singleLine="true" />
@@ -54,7 +56,7 @@
         style="@style/NoticeAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
         android:textColor="@color/light_theme_color_back_elevated"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"

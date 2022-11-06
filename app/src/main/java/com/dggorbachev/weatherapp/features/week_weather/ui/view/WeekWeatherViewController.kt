@@ -1,4 +1,4 @@
-package com.dggorbachev.weatherapp.features.current_weather.ui.view
+package com.dggorbachev.weatherapp.features.week_weather.ui.view
 
 import android.content.Context
 import android.location.Address
@@ -14,32 +14,42 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dggorbachev.weatherapp.R
 import com.dggorbachev.weatherapp.base.common.Constants
-import com.dggorbachev.weatherapp.base.exts.StringExt.firstCharUpper
-import com.dggorbachev.weatherapp.databinding.FragmentCurrentWeatherBinding
+import com.dggorbachev.weatherapp.databinding.FragmentWeekWeatherBinding
 import com.dggorbachev.weatherapp.domain.AsyncState
-import com.dggorbachev.weatherapp.domain.model.Weather
-import com.dggorbachev.weatherapp.features.current_weather.stateholders.CurrentWeatherViewModel
+import com.dggorbachev.weatherapp.domain.model.WeekWeather
+import com.dggorbachev.weatherapp.features.week_weather.stateholders.WeekWeatherViewModel
+import com.dggorbachev.weatherapp.features.week_weather.ui.view.adapter.WeekWeatherAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class CurrentWeatherViewController(
+class WeekWeatherViewController(
     private val context: Context,
-    private val binding: FragmentCurrentWeatherBinding,
-    private val viewModel: CurrentWeatherViewModel,
+    private val binding: FragmentWeekWeatherBinding,
+    private val viewModel: WeekWeatherViewModel,
     private val viewLifecycleOwner: LifecycleOwner,
     private val activity: FragmentActivity,
 ) {
 
-    private val geocoder = Geocoder(context, Locale("ru"))
+    private val adapter: WeekWeatherAdapter by lazy { WeekWeatherAdapter() }
+    private val geocoder = Geocoder(context, Locale("ru", "RU"))
 
-    fun setUpCurrentWeatherView() {
+    fun setUpWeekWeatherView() {
         bindMenu()
+        bindRecyclerView()
         bindLocation()
         observeLocationWeather()
+    }
+
+    private fun bindRecyclerView() {
+        val recyclerView = binding.rvWeek
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun bindLocation() {
@@ -56,6 +66,7 @@ class CurrentWeatherViewController(
                             longitude = addresses[0].longitude,
                         )
                     }
+
                 } catch (e: Exception) {
 
                     withContext(Dispatchers.Main) {
@@ -86,7 +97,7 @@ class CurrentWeatherViewController(
     }
 
     private fun observeRemoteWeather(latitude: Double, longitude: Double) {
-        viewModel.getCurrentWeather(latitude, longitude)
+        viewModel.getWeekWeather(latitude, longitude)
 
         viewModel.weather
             .observe(viewLifecycleOwner) { state ->
@@ -96,7 +107,8 @@ class CurrentWeatherViewController(
                     }
                     is AsyncState.Loaded -> {
                         bindNotification(false)
-                        bindWeatherInfo(state.data.latitude, state.data.longitude, state.data)
+                        adapter.submitList(state.data)
+                        bindWeatherInfo(state.data)
                     }
                     is AsyncState.Error -> {
                         bindNotification(true)
@@ -106,47 +118,18 @@ class CurrentWeatherViewController(
             }
     }
 
-    private fun bindWeatherInfo(latitude: Double, longitude: Double, weather: Weather) {
-
+    private fun bindWeatherInfo(weekWeather: List<WeekWeather>) {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val addresses: List<Address> = geocoder.getFromLocation(latitude, longitude, 1)
+            val geocoder = Geocoder(context, Locale("ru", "RU"))
+            val addresses: List<Address> =
+                geocoder.getFromLocation(weekWeather[0].latitude, weekWeather[0].longitude, 1)
             val cityName: String = addresses[0].locality
             val countryName: String = addresses[0].countryName
-
             withContext(Dispatchers.Main) {
                 binding.tvRegion.text = context.getString(R.string.region_message,
                     cityName,
                     countryName
                 )
-                binding.tvMinMaxTemp.text =
-                    context.getString(R.string.min_max_temp_message,
-                        weather.tempMax.toString(),
-                        weather.tempMin.toString()
-                    )
-
-                binding.tvFeelsLike.text =
-                    context.getString(R.string.feels_like_message, weather.feelsLike.toString())
-
-                binding.tvTemp.text =
-                    context.getString(R.string.temperature_message, weather.temp.toString())
-
-                binding.tvMain.text = weather.description.firstCharUpper()
-
-                binding.tvHumidity.text =
-                    context.getString(R.string.humidity_message, weather.humidity.toString())
-
-                binding.tvWind.text =
-                    context.getString(R.string.wind_speed_message, weather.windSpeed.toString())
-            }
-
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = weather.sunset * 1000
-
-            withContext(Dispatchers.Main) {
-                binding.tvSunset.text =
-                    context.getString(R.string.sunset_message,
-                        calendar.get(Calendar.HOUR_OF_DAY),
-                        calendar.get(Calendar.MINUTE))
             }
         }
     }
@@ -171,7 +154,7 @@ class CurrentWeatherViewController(
                     R.id.action_search -> {
                         viewLifecycleOwner.lifecycleScope.launch {
                             binding.root.findNavController()
-                                .navigate(R.id.action_currentWeatherFragment_to_searchFragment)
+                                .navigate(R.id.action_weekWeatherFragment_to_searchFragment)
                         }
                         true
                     }

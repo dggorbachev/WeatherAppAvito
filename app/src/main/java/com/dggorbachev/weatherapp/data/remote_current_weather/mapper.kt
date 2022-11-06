@@ -1,12 +1,12 @@
 package com.dggorbachev.weatherapp.data.remote_current_weather
 
 import com.dggorbachev.weatherapp.data.remote_current_weather.model.CurrentWeatherResponseModel
-import com.dggorbachev.weatherapp.domain.model.CurrentWeather
+import com.dggorbachev.weatherapp.domain.model.Weather
 
 object RemoteCurrentWeatherMapper {
 
     fun CurrentWeatherResponseModel.toDomainModel() =
-        CurrentWeather(
+        Weather(
             temp = this.main.temp,
             feelsLike = this.main.feelsLike,
             tempMin = this.main.tempMin,
@@ -16,6 +16,6 @@ object RemoteCurrentWeatherMapper {
             description = this.weather[0].description,
             sunset = this.sys.sunset,
             longitude = this.coord.longitude,
-            latitude = this.coord.latitude
+            latitude = this.coord.latitude,
         )
 }

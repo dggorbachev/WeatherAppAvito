@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_theme_color_support_separator">#33000000</color>
-    <color name="light_theme_color_support_overlay">#0F000000</color>
+    <color name="light_theme_color_support_overlay">#D0BCFC</color>
     <color name="light_theme_color_label_primary">#454545</color>
     <color name="light_theme_color_label_secondary">#000000</color>
     <color name="light_theme_color_label_tertiary">#4D000000</color>
@@ -26,7 +26,7 @@
     <color name="light_theme_color_back_elevated">#FFFFFF</color>
 
     <color name="dark_theme_color_support_separator">#33FFFFFF</color>
-    <color name="dark_theme_color_support_overlay">#52000000</color>
+    <color name="dark_theme_color_support_overlay">#5D5791</color>
     <color name="dark_theme_color_label_primary">#FFFFFF</color>
     <color name="dark_theme_color_label_secondary">#99FFFFFF</color>
     <color name="dark_theme_color_label_tertiary">#66FFFFFF</color>

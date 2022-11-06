@@ -26,6 +26,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -96,10 +97,6 @@ class MainActivity : DaggerAppCompatActivity() {
             getLocation()
         }
 
-        if (id == R.id.action_search) {
-            findNavController(R.id.nav_host).navigate(R.id.moveToSearchFragment)
-        }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -116,11 +113,11 @@ class MainActivity : DaggerAppCompatActivity() {
 
                     val location: Location? = task.result
                     if (location != null) {
-                        val geocoder = Geocoder(this, Locale("ru"))
-                        val list: List<Address> =
-                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                        lifecycleScope.launch(Dispatchers.IO) {
+                            val geocoder = Geocoder(this@MainActivity, Locale("ru", "RU"))
+                            val list: List<Address> =
+                                geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
-                        lifecycleScope.launch {
                             localLocationRepo.setCoordinates(list[0].latitude, list[0].longitude)
                             localLocationRepo.locationEnableChange(true)
                             preferencesManager.updateRegion(list[0].locality + ", " + list[0].countryName)

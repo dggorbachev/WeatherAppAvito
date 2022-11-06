@@ -17,6 +17,8 @@
         <item name="titleColor">@color/light_theme_color_label_secondary</item>
         <item name="appBackgroundColor">@color/light_theme_color_back_primary</item>
         <item name="menuItemColor">@color/light_theme_color_label_primary</item>
+        <item name="separatorColor">@color/light_theme_color_support_overlay</item>
+        <item name="weekInfoColor">@color/light_theme_color_support_overlay</item>
     </style>
 
     <style name="Theme.WeatherAppAvito.NoActionBar">
@@ -24,7 +26,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.WeatherAppAvito.ToolBar"></style>
+    <style name="Theme.WeatherAppAvito.ToolBar" />
 
     <style name="Theme.WeatherAppAvito.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
