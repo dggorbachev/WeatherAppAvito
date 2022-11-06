@@ -5,8 +5,10 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.isGone
@@ -46,6 +48,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
         super.onViewCreated(view, savedInstanceState)
 
         bindAutoComplete()
+        bindViewListeners()
         bindMenu()
     }
 
@@ -74,14 +77,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                         }
                         is AsyncState.Error -> {
                             binding.progressBar.isGone = true
-                            if (actvCity.text.toString() != "") {
+                            if (actvCity.text.length > 1) {
                                 bindNotification(true)
                                 tvNotification.text = state.message
                             }
+
                         }
                     }
                 }
             }
+        }
+    }
+
+    private fun bindViewListeners() {
+        with(binding) {
 
             actvCity.onItemClickListener = AdapterView.OnItemClickListener {
                     parent, _,
@@ -89,9 +98,19 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
                 ->
                 lifecycleScope.launch {
                     viewModel.saveRegion(parent.getItemAtPosition(position).toString())
-                    findNavController().navigate(R.id.moveToCurrentWeatherFragment)
+                    findNavController().popBackStack()
                 }
             }
+
+            actvCity.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    lifecycleScope.launch {
+                        viewModel.saveRegion(binding.actvCity.text.toString())
+                        findNavController().popBackStack()
+                    }
+                    true
+                } else false
+            })
         }
     }
 
@@ -105,10 +124,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
+                    android.R.id.home -> {
+                        findNavController().popBackStack()
+                        true
+                    }
                     R.id.action_accept -> {
                         lifecycleScope.launch {
                             viewModel.saveRegion(binding.actvCity.text.toString())
-                            findNavController().navigate(R.id.moveToCurrentWeatherFragment)
+                            findNavController().popBackStack()
                         }
                         true
                     }

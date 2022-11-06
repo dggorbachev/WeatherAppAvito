@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivDrop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:src="@drawable/ic_arrow_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?attr/titleColor" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/ivDrop"
+        app:layout_constraintEnd_toStartOf="@id/ivDrop"
+        app:layout_constraintTop_toTopOf="@id/ivDrop">
+
+        <TextView
+            android:id="@+id/tvMaxTemp"
+            style="@style/TextAppearance.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/titleColor"
+            app:layout_constraintBottom_toBottomOf="@id/ivDrop"
+            app:layout_constraintEnd_toStartOf="@id/ivDrop"
+            app:layout_constraintTop_toTopOf="@id/ivDrop"
+            app:tint="?attr/regionColor"
+            tools:text="16.12°C" />
+
+        <TextView
+            android:id="@+id/tvMinTemp"
+            style="@style/TextAppearance.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/weekInfoColor"
+            app:layout_constraintStart_toStartOf="@id/tvMaxTemp"
+            app:layout_constraintTop_toBottomOf="@id/tvMaxTemp"
+            app:tint="?attr/regionColor"
+            tools:text="13.23°C" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_weather_week"
+        app:layout_constraintBottom_toBottomOf="@id/ivDrop"
+        app:layout_constraintEnd_toStartOf="@id/llTemp"
+        app:layout_constraintTop_toTopOf="@id/ivDrop"
+        app:tint="?attr/regionColor" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        style="@style/TextAppearance.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:textColor="?attr/titleColor"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Суббота, 5 ноября" />
+
+    <TextView
+        android:id="@+id/tvWeatherDesc"
+        style="@style/TextAppearance.Info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="?attr/weekInfoColor"
+        app:layout_constraintStart_toStartOf="@id/tvDate"
+        app:layout_constraintTop_toBottomOf="@id/tvDate"
+        tools:text="Облачно с прояснениями" />
+
+    <LinearLayout
+        android:id="@+id/llWeatherInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWeatherDesc">
+
+        <TableLayout
+            android:id="@+id/tlWeatherText"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvWindText"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/wind_text"
+                android:textColor="?attr/weekInfoColor" />
+
+            <TextView
+                android:id="@+id/tvHumidityText"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/humidity_text"
+                android:textColor="?attr/weekInfoColor" />
+
+            <TextView
+                android:id="@+id/tvSunText"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/sunrise_sunset_text"
+                android:textColor="?attr/weekInfoColor" />
+
+            <TextView
+                android:id="@+id/tvFeelsLikeText"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/feels_like_text"
+                android:textColor="?attr/weekInfoColor" />
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/tlWeatherInfo"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_weight="0.5">
+
+            <TextView
+                android:id="@+id/tvWind"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="?attr/titleColor"
+                tools:text="7 м/с" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="?attr/titleColor"
+                tools:text="90%" />
+
+            <TextView
+                android:id="@+id/tvSun"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="?attr/titleColor"
+                tools:text="06:20 - 18:40" />
+
+            <TextView
+                android:id="@+id/tvFeelsLike"
+                style="@style/TextAppearance.Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="?attr/titleColor"
+                tools:text="16°C" />
+        </TableLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vSeparatorBot"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="?attr/separatorColor"
+        app:layout_constraintBottom_toBottomOf="@id/llWeatherInfoText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

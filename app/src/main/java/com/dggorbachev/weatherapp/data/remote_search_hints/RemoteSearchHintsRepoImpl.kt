@@ -1,7 +1,7 @@
 package com.dggorbachev.weatherapp.data.remote_search_hints
 
 import com.dggorbachev.weatherapp.base.SingleLiveEvent
-import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteCurrentWeatherMapper.toData
+import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteSearchHintsMapper.toData
 import com.dggorbachev.weatherapp.domain.AsyncState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

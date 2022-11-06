@@ -4,6 +4,10 @@ import com.dggorbachev.weatherapp.data.remote_current_weather.CurrentWeatherApi
 import com.dggorbachev.weatherapp.data.remote_current_weather.CurrentWeatherRemoteSource
 import com.dggorbachev.weatherapp.data.remote_current_weather.RemoteCurrentWeatherRepo
 import com.dggorbachev.weatherapp.data.remote_current_weather.RemoteCurrentWeatherRepoImpl
+import com.dggorbachev.weatherapp.data.remote_list_weather.RemoteWeekWeatherRepo
+import com.dggorbachev.weatherapp.data.remote_list_weather.RemoteWeekWeatherRepoImpl
+import com.dggorbachev.weatherapp.data.remote_list_weather.WeekWeatherApi
+import com.dggorbachev.weatherapp.data.remote_list_weather.WeekWeatherRemoteSource
 import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteSearchHintsRepo
 import com.dggorbachev.weatherapp.data.remote_search_hints.RemoteSearchHintsRepoImpl
 import com.dggorbachev.weatherapp.data.remote_search_hints.SearchHintsApi
@@ -45,4 +49,19 @@ object RemoteDataModule {
     @AppScope
     fun provideRemoteSearchHintsRepo(searchHintsRemoteSource: SearchHintsRemoteSource): RemoteSearchHintsRepo =
         RemoteSearchHintsRepoImpl(searchHintsRemoteSource)
+
+    @Provides
+    @AppScope
+    fun provideWeekWeatherApi(retrofit: Retrofit): WeekWeatherApi =
+        retrofit.create(WeekWeatherApi::class.java)
+
+    @Provides
+    @AppScope
+    fun provideWeekWeatherRemoteSource(weatherApi: WeekWeatherApi): WeekWeatherRemoteSource =
+        WeekWeatherRemoteSource(weatherApi)
+
+    @Provides
+    @AppScope
+    fun provideRemoteWeekWeatherRepo(weekWeatherRemoteSource: WeekWeatherRemoteSource): RemoteWeekWeatherRepo =
+        RemoteWeekWeatherRepoImpl(weekWeatherRemoteSource)
 }

@@ -5,5 +5,7 @@
         <attr name="titleColor" format="reference" />
         <attr name="appBackgroundColor" format="reference" />
         <attr name="menuItemColor" format="reference" />
+        <attr name="separatorColor" format="reference" />
+        <attr name="weekInfoColor" format="reference" />
     </declare-styleable>
 </resources>

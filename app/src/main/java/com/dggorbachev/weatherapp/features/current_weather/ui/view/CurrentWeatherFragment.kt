@@ -32,9 +32,9 @@ class CurrentWeatherFragment :
             CurrentWeatherViewController(requireContext(),
                 binding,
                 viewModel,
-                viewLifecycleOwner).apply { setUpCurrentWeatherView() }
-
+                viewLifecycleOwner, requireActivity()).apply { setUpCurrentWeatherView() }
     }
+
 
     override fun onDestroyView() {
         currentWeatherViewController = null
